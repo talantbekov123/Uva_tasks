@@ -1,0 +1,7 @@
+# Executables
+*.exe
+*.out
+
+# Input/output files
+output.txt
+input.txt
