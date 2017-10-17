@@ -1,33 +1,35 @@
-#include<iostream>
-#include<vector>
+#include <iostream>
 #include <stdio.h>
 using namespace std;
-int main() {
-	
+int main()
+{
 	freopen("input.txt", "r", stdin);
 	freopen("output.txt", "w", stdout);
-	int n;
-	cin >> n;
-	for(int i = 0; i < n; i++) {
-		int MAX = 0;
-		vector<string> name(10);
-		vector<int> value(10);
-		for(int j = 0; j < 10; j++) {
-			cin>> name[j] >> value[j];
-			if(value[j] > MAX) {
-				MAX = value[j];
+	int a, b;
+	while (cin>>a>>b) 
+	{
+		int carry=0;
+		int counter=0; 
+		while (a!=0 || b!=0)
+		{
+			int sum = a%10 + b%10 + carry; 
+			if (sum>=10){
+				carry = 1;
+				counter++; 
 			}
-		}
-
-		cout<<"Case #" << i + 1 << ":" <<endl;
-		for(int j = 0; j < 10; j++) {
-			if(value[j] == MAX) {
-				cout<< name[j] <<endl;
+			else if (sum<10){
+				carry=0; 
 			}
+			a/=10;
+			b/=10; 
 		}
-
+		if (counter==0){
+			cout << "No carry operation."<<endl;	
+		}else if (counter==1){
+			cout << "1 carry operation."<<endl; 
+		}else{
+			cout<<counter<<" carry operations"<<endl; 
+		}
 	}
-	
-	return 0;
+	return 0; 
 }
-
